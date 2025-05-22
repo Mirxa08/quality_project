@@ -80,6 +80,7 @@ with st.expander("ℹ️ About this Assistant"):
     - Click **🆕 New Case** to start over.
 
     ✅ Designed for hospital QA, audits, and investiagtional purposes.
+    
     ***Note***: This is an early model not having all the policies included so results may vary.
     """)
 
