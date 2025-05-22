@@ -76,10 +76,12 @@ with st.expander("ℹ️ About this Assistant"):
     **Welcome to the Policy Encyclopedia!**  
     - Enter a **case scenario or compliance question**.  
     - The system will search SOP documents and return **relevant clauses**.  
-    - Each result will **cite clause numbers** and **document names**.  
+    - Each result will **cite clause numbers** and **document names** relevant to the case.
+    - System can extract more than one result in some cases so be sure to give it a read.  
     - Click **🆕 New Case** to start over.
 
     ✅ Designed for hospital QA, audits, and investiagtional purposes.
+    
     
     ***Note***: This is an early model not having all the policies included so results may vary.
     """)
