@@ -63,8 +63,24 @@ def call_groq(history, query, context_chunks):
     )
     return response.choices[0].message.content
 
-st.set_page_config(page_title="SOP Compliance Assistant", layout="wide")
-st.title("🏥 SOP Compliance Assistant")
+st.set_page_config(page_title="Policy Encyclopedia", layout="wide")
+st.title("🏥 Policy Encyclopedia")
+
+# Show toast once per session
+if "welcome_shown" not in st.session_state:
+    st.toast("💡 Ask a case-related question to find relevant policies to that scenario!", icon="💡")
+    st.session_state.welcome_shown = True
+
+with st.expander("ℹ️ About this Assistant"):
+    st.markdown("""
+    **Welcome to the Policy Encyclopedia!**  
+    - Enter a **case scenario or compliance question**.  
+    - The system will search SOP documents and return **relevant clauses**.  
+    - Each result will **cite clause numbers** and **document names**.  
+    - Click **🆕 New Case** to start over.
+
+    ✅ Designed for hospital QA, audits, and investiagtional purposes.
+    """)
 
 # Init session state
 if "history" not in st.session_state:
