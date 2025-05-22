@@ -2,12 +2,10 @@ import os
 import fitz  # PyMuPDF
 import json
 
-# --- Configuration ---
-PDF_DIR = "pdfs"
-OUTPUT_DIR = "Text"
+PDF_DIR = ""    # files location
+OUTPUT_DIR = ""
 META_FILE = os.path.join(OUTPUT_DIR, "metadata.json")
 
-# Create output directory if it doesn't exist
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 def extract_text_and_metadata(pdf_path):
@@ -16,7 +14,7 @@ def extract_text_and_metadata(pdf_path):
     for page in doc:
         full_text += page.get_text()
 
-    title_guess = doc[0].get_text("text").split("\n")[0].strip()  # First line of first page
+    title_guess = doc[0].get_text("text").split("\n")[0].strip()
     metadata = {
         "file_name": os.path.basename(pdf_path),
         "title": title_guess,
@@ -44,7 +42,6 @@ def process_all_pdfs(pdf_dir, output_dir):
 
             print(f"[✔] Extracted: {filename} → {txt_filename}")
 
-    # Save metadata
     with open(META_FILE, "w", encoding="utf-8") as f:
         json.dump(all_metadata, f, indent=2)
 

@@ -1,16 +1,13 @@
 import os
 import re
 
-# --- Configuration ---
-INPUT_DIR = "./Text"
+INPUT_DIR = ""  # where extracted text is saved
 OUTPUT_DIR = "./Clean"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 def clean_text(text):
-    # Remove page numbers like "Page 1 of 18"
-    text = re.sub(r'Page\s+\d+\s+of\s+\d+', '', text)
 
-    # Remove lines with repeated SOP titles/headers
+    text = re.sub(r'Page\s+\d+\s+of\s+\d+', '', text)
     text = re.sub(r'Title of Policy/ SOP:.*?\n', '', text)
     text = re.sub(r'Policy/ SOP Code:.*?\n', '', text)
     text = re.sub(r'Department:.*?\n', '', text)
@@ -18,11 +15,7 @@ def clean_text(text):
     text = re.sub(r'Effective date:.*?\n', '', text)
     text = re.sub(r'Section:.*?\n', '', text)
     text = re.sub(r'Revision date:.*?\n', '', text)
-
-    # Collapse multiple newlines
     text = re.sub(r'\n\s*\n+', '\n\n', text)
-
-    # Strip leading/trailing spaces
     return text.strip()
 
 def process_files(input_dir, output_dir):

@@ -4,14 +4,13 @@ import numpy as np
 import faiss
 from sentence_transformers import SentenceTransformer
 
-# --- Configuration ---
 TEXT_DIR = "Clean"
 INDEX_FILE = "./sop_index/faiss.index"
 CHUNKS_FILE = "./sop_index/chunks.json"
 META_FILE = "./sop_index/chunk_metadata.json"
 
-CHUNK_SIZE = 300  # words
-OVERLAP = 50      # words
+CHUNK_SIZE = 300
+OVERLAP = 50
 EMBED_MODEL = "all-MiniLM-L6-v2"
 
 os.makedirs("./sop_index", exist_ok=True)
@@ -58,11 +57,9 @@ if __name__ == "__main__":
     embedder = SentenceTransformer(EMBED_MODEL)
     index, embeddings = build_faiss_index(chunks, embedder)
 
-    # Save FAISS index
     faiss.write_index(index, INDEX_FILE)
     print(f"✅ FAISS index saved to: {INDEX_FILE}")
 
-    # Save chunks and metadata
     with open(CHUNKS_FILE, "w", encoding="utf-8") as f:
         json.dump(chunks, f, indent=2)
     with open(META_FILE, "w", encoding="utf-8") as f:

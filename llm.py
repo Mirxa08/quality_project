@@ -13,7 +13,7 @@ EMBED_MODEL = "all-MiniLM-L6-v2"
 TOP_K = 5
 
 # Set Groq API Key from environment variable
-api_key = "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"
+api_key = "api_key_here"
 client = Groq(api_key=api_key)
 
 # --- Load Data ---
