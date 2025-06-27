@@ -15,7 +15,7 @@ TOP_K = 5
 
 # API Setup
 api_key = st.secrets["api"]["groq_key"]
-client = Groq(api_key="your_key_here")
+client = Groq(api_key)
 
 # ========== Cacheable Resources ========== #
 @st.cache_resource
@@ -48,7 +48,7 @@ def refine_query(user_input):
         model="llama3-70b-8192",
         messages=[{"role": "system", "content": system_prompt}],
         temperature=0.1,
-        max_tokens=200
+        max_tokens=1000
     )
     st.toast(response.choices[0].message.content.strip())
     return response.choices[0].message.content.strip()
