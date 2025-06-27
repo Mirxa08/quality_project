@@ -14,8 +14,8 @@ EMBED_MODEL = "all-MiniLM-L6-v2"
 TOP_K = 5
 
 # API Setup
-#api_key = st.secrets["api"]["groq_key"]
-client = Groq(api_key="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")
+api_key = st.secrets["api"]["groq_key"]
+client = Groq(api_key="your_key_here")
 
 # ========== Cacheable Resources ========== #
 @st.cache_resource
