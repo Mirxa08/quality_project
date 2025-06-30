@@ -162,6 +162,6 @@ if user_input:
 
     st.chat_message("assistant").markdown(assistant_reply)
 
-    with st.expander("📎 Sources Used"):
+    with st.expander("📎 Policies Used"):
         for c in top_chunks:
             st.markdown(f"**{c['source']}**")
