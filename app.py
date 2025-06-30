@@ -15,7 +15,7 @@ TOP_K = 5
 
 # API Setup
 api_key = st.secrets["api"]["groq_key"]
-client = Groq(api_key)
+client = Groq(api_key=api_key)
 
 # ========== Cacheable Resources ========== #
 @st.cache_resource
